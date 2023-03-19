@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { AppointmentProvider } from './Data/useData';
 import { Grid } from '@mui/material';
 import { Agenda } from './View';
@@ -10,7 +9,7 @@ function App() {
  
     <AppointmentProvider>
       <Grid container>
-        <Grid item xs={12}>
+        <Grid item xs={12} color = "#8298">
           <Agenda />
         </Grid>
       </Grid>
