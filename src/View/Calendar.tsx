@@ -56,50 +56,26 @@ const Agenda = () => {
         <Typography variant="h4">Agenda</Typography>
       </Grid>
 
-      <Grid>
+      <Grid item xs={6} md={2}>
+        <Paper className={classes.paper} >
+          <Typography variant="subtitle1">Anteriores</Typography>
+        </Paper>
+      </Grid>
+
+      <Grid 
+        container
+        spacing={3}
+        direction='row'
+        justifyContent='center'
+        alignItems={isSmallScreen ? 'center' : 'flex-start'}
+        >
       {daysAvailable.map((day : number) => (
 
         <Paper className={classes.paper} key={day}>
           <Typography variant="h6">{day}</Typography>
         </Paper>
-
-
-
-        // <Grid item xs={6} md={2} key={day}>
-        //   <Paper
-        //     className={`${classes.paper} ${
-        //       selectedDate === day ? classes.selectedPaper : ''
-        //     }`}
-        //     onClick={() => handleAppointmentClick(day, null)}
-        //   >
-        //     <Typography variant="h6">{appointment[day].dia}</Typography>
-        //     <Typography variant="subtitle1">
-        //       {appointment[day].mes}
-        //     </Typography>
-        //   </Paper>
-
-        //   <Box className={classes.hours}>
-        //     {hoursAvailable.map((hour) => (
-        //       <Paper
-        //         className={`${classes.paper} ${
-        //           selectedTime === hour ? classes.selectedPaper : ''
-        //         }`}
-        //         onClick={() => handleAppointmentClick(day, hour)}
-        //         key={hour}
-        //       >
-        //         <Typography variant="subtitle1">{hour}</Typography>
-        //       </Paper>
-        //     ))}
-        //   </Box>
-        // </Grid>
       ))}
 
-      </Grid>
-
-      <Grid item xs={6} md={2}>
-        <Paper className={classes.paper} >
-          <Typography variant="subtitle1">Anteriores</Typography>
-        </Paper>
       </Grid>
       <Grid item xs={6} md={2}>
         <Paper className={classes.paper}>
