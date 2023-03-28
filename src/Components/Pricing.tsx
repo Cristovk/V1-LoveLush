@@ -20,9 +20,9 @@ function Pricing5() {
     <section
       className="pricing-5"
       id="pricing-6"
-      style={{
-        backgroundImage: `url(${require("assets/img/ill/bg_pricing5.svg")})`,
-      }}
+      // style={{
+      //   backgroundImage: `url(${require("assets/img/ill/bg_pricing5.svg")})`,
+      // }}
     >
       <Container className="pt-5">
         <Grid container spacing={2}>

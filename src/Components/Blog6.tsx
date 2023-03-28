@@ -1,7 +1,10 @@
 import * as React from "react";
 import { Card, CardContent, Container, Grid, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
 function Blogs2() {
+
+  const theme = useTheme();
   return (
     <>
       <section className="blogs-2">
@@ -12,11 +15,11 @@ function Blogs2() {
             alignItems="center"
             justifyContent="center"
           >
-            <Grid item md={8}>
-              <Typography variant="h3" align="center" gutterBottom>
+            <Grid item md={8}  sx={{ textAlign: "center", mb: 5 }}>
+              <Typography variant="h3" align="center" gutterBottom style={{ color: theme.palette.primary.main}}   >
                 Por que Love Lash?
               </Typography>
-              <Typography variant="body1" align="center" gutterBottom>
+              <Typography variant="body1" style={{ color: theme.palette.text.primary}}  gutterBottom>
                 Nuestro principal objetivo es hacerte sentir bonita, por eso,
                 nos enfocamos en escuchar las necesidades de cada clienta
                 mediante evaluaciones personalizadas, ofrecemos asesoría para

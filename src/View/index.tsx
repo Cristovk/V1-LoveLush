@@ -1,3 +1,7 @@
 import Agenda from "./Calendar";
+import Home from "./Home";
 
-export { Agenda}
+export { 
+    Agenda,
+    Home
+}
