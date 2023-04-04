@@ -7,7 +7,7 @@ export const AppointmentProvider = ({ children })   => {
   const [selectedDate, setSelectedDate] = useState<number | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [appointment , setAppointment] = useState(appointments);
-  const [appointmentSix, setAppointmentSix] = useState(appointments.slice(0, 6));
+  const [appointmentSix, setAppointmentSix] = useState<any>([]);
   const [daysAvailable, setDaysAvailable] = useState<string []>([]);
   const [hoursAvailable, setHoursAvailable] = useState<string [][]>([]);
   
@@ -21,6 +21,7 @@ export const AppointmentProvider = ({ children })   => {
       let diaMes = `${dia}/${mes}`;
       return diaMes
     });
+  setAppointmentSix(Six);
     setDaysAvailable(days);
   }, [selectedDate]);
 
@@ -41,10 +42,10 @@ export const AppointmentProvider = ({ children })   => {
 
       
     });
+    
+        console.log('Horas Disponibles',hoursAvailable);
+        console.log('Horas typo', hoursAvailable)
     setHoursAvailable(hoursAvailables);
-
-    console.log('Horas Disponibles',hoursAvailable);
-    console.log('Horas typo', hoursAvailable)
   
   }, [selectedDate]);
 
@@ -55,24 +56,6 @@ export const AppointmentProvider = ({ children })   => {
     setSelectedTime(null);
   };
 
-  // Actualizar el estado de la cita seleccionada
-  // const handleTimeChange = (time: string | null) => {
-  //   setSelectedTime(time);
-  // };
-  
-  // // Actualizar el estado de la cita seleccionada
-  // const handleAppointmentChange = (appointment: object[]) => {
-  //   // setAppointmentSix(appointment);
-  // }
-
-  // const handleNext = () => {
-  //   setAppointmentSix(appointments.slice(6, 12));
-  // };
-
-  // const handlePrev = () => {
-  //   setAppointmentSix(appointments.slice(0, 6));
-  // };
-
   
 
   
@@ -81,11 +64,13 @@ export const AppointmentProvider = ({ children })   => {
     
     value={{
       appointment,
+      appointmentSix,
       selectedDate,
       selectedTime,
       handleDateChange,
       daysAvailable,
       hoursAvailable,
+
 
     }}
     >

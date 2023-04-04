@@ -11,9 +11,9 @@ function App() {
     <ThemeProvider theme={theme}>
     <AppointmentProvider>
       <Grid container   >
-        <Grid item xs={12} >
+        
           <Home/>
-        </Grid>
+        
       </Grid>
     </AppointmentProvider>
     </ThemeProvider>

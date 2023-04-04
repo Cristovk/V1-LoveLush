@@ -13,6 +13,9 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useTheme } from "@mui/material/styles";
+import { makeStyles } from '@mui/styles';
+
+
 
 
 function Header4() {
@@ -20,38 +23,52 @@ function Header4() {
 
   const [navbarOpen, setNavbarOpen] = React.useState(false);
 
+
+
   const handleNavbarToggle = () => {
     setNavbarOpen(!navbarOpen);
   };
 
   return (
     <>
-      <div className="page-header header-video">
-        <div className="overlay"></div>
-      <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          //   src={require("assets/videos/Lights - 26607.mp4")}
-        // //   type="video/mp4"  */}
-        />
-        <Container className="text-center">
-          <Typography variant="h1" style={{ color: theme.palette.text.primary}} >
+
+    
+        <Container  >
+          <Typography   style={{ 
+            fontSize: "13rem",
+            color: theme.palette.secondary.main,
+            display: "flex",
+            justifyContent: "center",
+            fontFamily: theme.typography.fontFamily
+
+
+            }} >
             Love Lash
           </Typography>
-          <Typography variant="h3" style={{ color: theme.palette.primary.main}} >
+          {/* <Typography variant="h3" style={{ 
+            color: theme.palette.primary.main,
+            display: "flex",
+            justifyContent: "center",
+            }} >
             Pestañas
-          </Typography>
-          <Button
+          </Typography> */}
+          {/* <Button
             sx={{ mt: 3 }}
             variant="contained"
-            style={{ backgroundColor: theme.palette.secondary.light, color: theme.palette.primary.main}}
+            style={{
+               backgroundColor: 
+              theme.palette.secondary.light, 
+              color: theme.palette.primary.main,
+             // centrar el boton
+              display: "flex",
+              justifyContent: "flex-end",
+
+            }}
             >
             Que Deseas
-          </Button>
+          </Button> */}
         </Container>
-        </div>
+
     </>
     );
     

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTheme } from "@mui/material/styles";
 import {
   Card,
   CardHeader,
@@ -13,103 +14,122 @@ import {
 } from "@mui/material";
 
 function Pricing5() {
+  const theme = useTheme();
   const [activeTab, setActiveTab] = useState(0);
-  const tabs = ["Clasicos", "Full"];
+  const tabs = ["Clásicos", "Full"];
 
   return (
-    <section
-      className="pricing-5"
-      id="pricing-6"
-      // style={{
-      //   backgroundImage: `url(${require("assets/img/ill/bg_pricing5.svg")})`,
-      // }}
-    >
-      <Container className="pt-5">
-        <Grid container spacing={2}>
-          <Grid item md={4} className="d-flex justify-content-center flex-column">
-            <Typography variant="h3" className="mt-3" gutterBottom>
+    <section>
+      <Container>
+      
+        <Grid container spacing={2} 
+         style={{backgroundColor: theme.palette.primary.main,
+         height: "100%",
+         flexDirection: "column",
+         alignItems: "center",
+         
+         }}>
+          <Grid item xs={12} md={4}>
+            <Typography variant="h3" align="center" gutterBottom>
               Servicios
-            </Typography>
+             </Typography>
             <Tabs
               value={activeTab}
               onChange={(_, newTab) => setActiveTab(newTab)}
               variant="fullWidth"
-              textColor="primary"
-              indicatorColor="primary"
-              aria-label="pricing tab"
-              className="my-4 nav-pills-primary"
             >
               {tabs.map((tab, index) => (
                 <Tab label={tab} key={index} />
               ))}
             </Tabs>
-            <Typography variant="subtitle1" gutterBottom>
-              Algun texto
-            </Typography>
+         
           </Grid>
-          <Grid item md={8} className="ml-auto mr-auto">
-            <CardContent className="tab-space">
+          <Grid item xs={12} md={8}>
+            <CardContent>
               {tabs.map((tab, index) => (
-                <div key={index} hidden={activeTab !== index}>
+                <Grid key={index} hidden={activeTab !== index}>
                   <Grid container spacing={2}>
-                    <Grid item md={6}>
-                      <Card className="card-pricing bg-white border-0 text-center mb-4">
-                        <CardHeader title="Clasica" className="bg-transparent" />
+                    <Grid item xs={12} sm={6}>
+                      <Card
+                        style={{
+                          backgroundColor: theme.palette.primary.main,
+                          height: "100%",
+                        }}
+                      >
+                        <CardHeader title="Efecto Full" />
                         <CardContent>
                           <Typography variant="h3" gutterBottom>
                             $35.000
                           </Typography>
-                          <ul className="list-unstyled my-4">
-                            <li className="align-items-center">
-                              <Typography variant="subtitle1" className="text-primary font-weight-bold">
+                          <ul>
+                            <li>
+                              <Typography variant="subtitle2">
                                 Tienen un acabado muy natural,
                               </Typography>{" "}
                               <Typography variant="subtitle2">
-                                sobre todo si se colocan en longitudes cortas, se usa 1 extensión encima de cada
-                                pestaña natural.
+                                sobre todo si se colocan en longitudes cortas,
+                                se usa 1 extensión encima de cada pestaña
+                                natural.
                               </Typography>
                             </li>
                           </ul>
                         </CardContent>
-                        <CardActions className="bg-transparent">
-                          <Button variant="contained" color="primary" onClick={(e) => e.preventDefault()}>
+                        <CardActions>
+                          <Button
+                            variant="text"
+                            color="warning"
+                            onClick={(e) => e.preventDefault()}
+                          >
                             Agendar
                           </Button>
                         </CardActions>
                       </Card>
                     </Grid>
-                    <Grid item md={6}>
-                      <Card className="card-pricing bg-white border-0 text-center mb-4">
-                        <CardHeader title="Efecto Natural" className="bg-transparent" />
+                    <Grid item xs={12} sm={6}>
+                      <Card
+                        style={{
+                          backgroundColor: theme.palette.primary.main,
+                          height: "100%",
+                        }}
+                      >
+                        <CardHeader title="Efecto Natural" />
                         <CardContent>
                           <Typography variant="h3" gutterBottom>
                             $35.000
                           </Typography>
-                          <ul className="list-unstyled my-4">
-                            <li className="align-items-center">
-                              <Typography variant="subtitle1" className="text-primary font-weight-bold">
-                                Este efecto se crea utilizando 2 extensiones cerradas encima de cada pestaña
-                                natural,
-                              </Typography>{" "}
+                          <ul>
+                            <li>
                               <Typography variant="subtitle2">
-                                sin embargo sigue siendo una muy buena opción si quieres resultados con este
-                                estilo.
-                            </Typography>
+                                Este efecto se crea utilizando 2 extensiones
+                                cerradas encima de cada pestaña natural,
+                              </Typography>
+                              <Typography variant="subtitle2">
+                                sin embargo sigue siendo una muy buena opción si
+                                quieres resultados con este estilo.
+                              </Typography>
                             </li>
-                            </ul>
+                          </ul>
+                          <CardActions>
+                            <Button
+                              variant="text"
+                              color="warning"
+                              onClick={(e) => e.preventDefault()}
+                            >
+                              Agendar
+                            </Button>
+                          </CardActions>
                         </CardContent>
-                        </Card>
-                        </Grid>
-                        </Grid>
-                        </div>
-                        ))}
-                        </CardContent>
-                        </Grid>
-                        </Grid>
-                        </Container>
-                        </section>
+                      </Card>
+                    </Grid>
+                  </Grid>
+                </Grid>
+              ))}
+            </CardContent>
+          </Grid>
+        </Grid>
+      </Container>
+    </section>
+  );
+}
 
-                
-                );
-                }
-                export default Pricing5;
+export default Pricing5;
