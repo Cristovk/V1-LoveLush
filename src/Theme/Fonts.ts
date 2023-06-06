@@ -5,9 +5,9 @@ export const TypographyFont = {
 //Secindaria Poppins 
 //secundaria brillant Signature
  fontFamilies: {
-            sans: "Poppins",
-            serif: "Poppins",
-            mono: "Poppins",
+            sans: "Bebas Neue",
+            serif: "Bebas Neue",
+            mono: "Bebas Neue",
             
         },
         fontSizes: {
@@ -43,7 +43,7 @@ export const TypographyFont = {
         },
         fonts: {
             heading: "Bebas Neue",
-            body: "Poppins",
-            mono: "Poppins",
+            body: "Bebas Neue",
+            mono: "Bebas Neue",
         }
     }

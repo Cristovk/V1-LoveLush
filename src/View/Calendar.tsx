@@ -1,89 +1,83 @@
+import React, { useState } from 'react';
+import { Box, Typography, Grid, Button } from '@mui/material';
 
-import React, { useContext } from 'react';
-import { Grid, Paper, Box, Typography , useMediaQuery} from '@mui/material';
-import { makeStyles,  useTheme} from '@material-ui/core/styles';
-import {AgendaContext} from '../Data/useData';
+const availableDates = [
+  new Date(2023, 4, 16), // May 16, 2023
+  new Date(2023, 4, 17), // May 17, 2023
+  new Date(2023, 4, 18), // May 18, 2023
+  // ... add more dates here
+];
 
-const useStyles  = makeStyles((theme) => ({
+const availableHours = ['9:00', '10:30', '12:00', '13:30'];
 
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-      cursor: 'pointer',
-    },
-    selectedPaper: {
-      backgroundColor: theme.palette.primary.main,
-      color: theme.palette.common.white,
-    },
-    hours: {
-      marginTop: theme.spacing(1),
-      display: 'flex',
-      flexWrap: 'wrap',
-      justifyContent: 'center',
-    },
-  }));
+const ScheduleComponent = () => {
+  const [selectedDate, setSelectedDate] = useState(null || new Date());
+  const [selectedHour, setSelectedHour] = useState(null);
 
-
-const Agenda = () => {
-  const classes = useStyles();
-  const { 
-      appointment,
-      selectedDate,
-      selectedTime,
-      handleDateChange,
-      daysAvailable,
-      hoursAvailable,
-
-   } = useContext(AgendaContext);
-
-
-
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-  const isMediumScreen = useMediaQuery(theme.breakpoints.between('sm', 'md'));
-
-  const handleAppointmentClick = (date, time) => {
-    handleDateChange(date);
-    // handleTimeChange(time);
+  const handleDateClick = (date) => {
+    setSelectedDate(date);
+    setSelectedHour(null);
   };
-  
-  console.log( 'Dias avatibles', daysAvailable)     
-  
+
+  const handleHourClick = (hour) => {
+    setSelectedHour(hour);
+  };
+
   return (
-    <Grid container spacing={3} sx={{ backgroundColor: '#de4344' }}>
-      <Grid item xs={12}>
-        <Typography variant="h4">Agenda</Typography>
+    <Box m={4}>
+      <Typography variant="h4" gutterBottom>
+        Select a date:
+      </Typography>
+      <Grid container spacing={2} justifyContent="center">
+        {availableDates.map((date) => (
+          <Grid item key={date.toISOString()}>
+            <Button
+              variant={date === selectedDate ? 'contained' : 'outlined'}
+              color='primary' 
+              onClick={() => handleDateClick(date)}
+            >
+              {date.toDateString()}
+            </Button>
+          </Grid>
+        ))}
       </Grid>
 
-      <Grid item xs={6} md={2}>
-        <Paper className={classes.paper} >
-          <Typography variant="subtitle1">Anteriores</Typography>
-        </Paper>
-      </Grid>
+      {selectedDate && (
+        <Box mt={4}>
+          <Typography variant="h4" gutterBottom>
+            Select an available hour:
+          </Typography>
+          <Grid container spacing={2} justifyContent="center">
+            {availableHours.map((hour) => (
+              <Grid item key={hour}>
+                <Button
+                  variant={hour === selectedHour ? 'contained' : 'outlined'}
+                  color='primary' 
+                  onClick={() => handleHourClick(hour)}
+                >
+                  {hour}
+                </Button>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+      )}
 
-      <Grid 
-        container
-        spacing={3}
-        direction='row'
-        justifyContent='center'
-        alignItems={isSmallScreen ? 'center' : 'flex-start'}
-        >
-      {daysAvailable.map((day : number) => (
-
-        <Paper className={classes.paper} key={day}>
-          <Typography variant="h6">{day}</Typography>
-        </Paper>
-      ))}
-
-      </Grid>
-      <Grid item xs={6} md={2}>
-        <Paper className={classes.paper}>
-          <Typography variant="subtitle1">Siguientes</Typography>
-        </Paper>
-      </Grid> 
-    </Grid>
+      {selectedHour && (
+        <Box mt={4}>
+          <Typography variant="h4" gutterBottom>
+            Selected date and hour:
+          </Typography>
+          <Typography variant="body1" gutterBottom>
+            Date: {selectedDate.toDateString()}
+          </Typography>
+          <Typography variant="body1" gutterBottom>
+            Hour: {selectedHour}
+          </Typography>
+        </Box>
+      )}
+    </Box>
   );
 };
 
-export default Agenda;
+export default ScheduleComponent;
